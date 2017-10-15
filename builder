@@ -18,7 +18,7 @@ create_release(){
 		"prerelease": true
 	}'
 	PAYLOAD=$(printf "$PAYLOAD", '1.0' 'MASTER' '1.0' "$DESC")
-	echo "> PAYLOAD=$PAYLOAD"
+	echo "> PAYLOAD=${PAYLOAD}<"
 	RESULT=$(curl -i -f -X POST "https://api.github.com/repos/$REPO_URL/releases?access_token=$REPO_TOKEN" \
 --data "$PAYLOAD")
 	TAG_ID=$(echo "$RESULT" | grep -o -E 'id": [0-9]+'| awk '{print $2}' | head -n 1)
