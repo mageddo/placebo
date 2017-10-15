@@ -18,8 +18,9 @@ create_release(){
 		"prerelease": true
 	}'
 	PAYLOAD=$(printf "$PAYLOAD", '1.0' 'MASTER' '1.0' "$DESC")
-	TAG_ID=$(curl -i -s -f -X POST "https://api.github.com/repos/$REPO_URL/releases?access_token=$REPO_TOKEN" \
---data "$PAYLOAD" | grep -o -E 'id": [0-9]+'| awk '{print $2}' | head -n 1)
+	RESULT=$(curl -i -f -X POST "https://api.github.com/repos/$REPO_URL/releases?access_token=$REPO_TOKEN" \
+--data "$PAYLOAD")
+	TAG_ID=$(echo "$RESULT" | grep -o -E 'id": [0-9]+'| awk '{print $2}' | head -n 1)
 }
 
 upload_file(){
