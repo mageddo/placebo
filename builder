@@ -17,7 +17,7 @@ create_release(){
 		"draft": false,
 		"prerelease": true
 	}'
-	PAYLOAD=$(printf "$PAYLOAD", '1.0' 'MASTER' '1.0' "$DESC")
+	PAYLOAD=$(printf "$PAYLOAD" '1.0' 'MASTER' '1.0' "$DESC")
 	echo "> PAYLOAD=${PAYLOAD}<"
 	RESULT=$(curl -i -f -X POST "https://api.github.com/repos/$REPO_URL/releases?access_token=$REPO_TOKEN" \
 --data "$PAYLOAD")
