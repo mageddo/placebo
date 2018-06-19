@@ -14,7 +14,7 @@ release {
     failOnCommitNeeded = false
     failOnPublishNeeded = false
     failOnUnversionedFiles = false
-    buildTasks = []
+    buildTasks = ['build']
 
 }
 
