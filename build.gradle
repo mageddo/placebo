@@ -2,6 +2,10 @@ plugins {
     id 'net.researchgate.release' version '2.7.0'
 }
 
+apply plugin: 'java'
+apply plugin: 'application'
+
+
 release {
     project.ext.set("release.useAutomaticVersion", true)
     git {
@@ -11,4 +15,7 @@ release {
     failOnPublishNeeded = false
     failOnUnversionedFiles = false
     buildTasks = []
+
 }
+
+mainClassName = 'com.mageddo.Main'
